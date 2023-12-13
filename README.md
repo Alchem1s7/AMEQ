@@ -31,9 +31,8 @@ Data extraction is done directly from the compressed file in RAR format that was
 
 Decompressing the file returns three folders, one for each year, containing the monthly accruals.
 
-_ **Figure 1. Example of decompressing the RAR file** _
 
-![](RackMultipart20231213-1-mrl30f_html_bdfed3649ab3e4c9.png)
+
 
 Within the 2021 and 2022 folders we find a folder for each month of the year, with Excel files for each day. These files, although they have the ".xsl" extension, are essentially tables saved as html.
 
@@ -43,15 +42,12 @@ In addition to this type of files, there are also files in other formats or with
 
 The Python script is designed for the end user to run the script and enter the base folder paths. This script is powered by secondary scripts that perform different actions. When running the main script, called master\_etl.py, it is necessary that the secondary scripts are stored in the same folder so that the main script does not fail when calling the others.
 
-_ **Figure 2. Scripts required for the ETL** _
-
-![](RackMultipart20231213-1-mrl30f_html_2cf7cae0bf472fa1.png)
-
 The first path that is asked to enter in the script is the one that will contain all the base files. This folder can be renamed, as long as the contents are the same. The structure of the files within this folder must be as follows; if this is not met, the script will show an error.
 
-_ **Figure 3. Contents of the main folder for feeding the ETL** _
+_ ** Contents of the main folder for feeding the ETL** _
 
-![](RackMultipart20231213-1-mrl30f_html_b0fad902f906152d.png)
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/19f9b492-02dd-4d07-8382-57b9303a58de)
+
 
 It is necessary that within this inputs folder the files shown and with the same name be in the root.
 
@@ -59,41 +55,44 @@ Under no circumstances should the name of the folders be modified.
 
 For the annual folders, from 2021 onwards, the structure within them must be as follows:
 
-_ **Figure 4. Structure within the annual folders for years after 2020** _
+_ **Structure within the annual folders for years after 2020** _
 
-![](RackMultipart20231213-1-mrl30f_html_953f4478eed83029.png)
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/df4e4d62-62d6-4957-a217-4d5168bb9d4c)
+
 
 And inside each monthly folder you will find the daily files:
 
-_ **Figure 5. Daily content within each monthly folder for data after 2020** _
+_ ** Daily content within each monthly folder for data after 2020** _
 
-![](RackMultipart20231213-1-mrl30f_html_ec9ec7a22c1d0eab.png)
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/fa1c8f1a-f746-4e59-913e-e916645db671)
+
 
 In the case of folders for the years 2020 and earlier, the structure is as follows:
 
-_ **Figure 6. Monthly conglomerate files within the folders for the years prior to 2021.** _
+_ **Monthly conglomerate files within the folders for the years prior to 2021.** _
 
-![](RackMultipart20231213-1-mrl30f_html_187b44ef3c392ff2.png)
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/c4021c94-1e05-4886-8220-f291819e4947)
+
 
 As you will notice, in these years there are only monthly accruals.
 
 When the script starts, a screen like the following will be displayed, just follow the steps and the ETL process will be finished:
 
-_ **Figure 7. Python Script Terminal where the paths for the process are provided** _
-
-![](RackMultipart20231213-1-mrl30f_html_91c1b545bed48e1a.png)
+_ **Python Script Terminal where the paths for the process are provided** _
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/6cde33cc-7241-4954-8f98-25601d7979b8)
 
 You yourself will notice the end of the process since the script indicates it.
 
 In the folder you indicated to save the files, you will find the following:
 
-_ **Figure 8. Normalized files after the end of the process** _
+_ **Normalized files after the end of the process, inside the Outputs folder** _
 
-![](RackMultipart20231213-1-mrl30f_html_34d0dd2c07328204.png)
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/77f26981-6084-4de7-98b0-88fa23425aa4)
+
 
 The files returned by the script are necessary for building the relational model in Power Bi, in addition to some others that are processed in Power Query. The following table shows different files that are needed for the dashboard, their origin and use.
 
-_ **Table 1. Origin and description of the files that are uploaded to Power Bi.** _
+_ **Origin and description of the files that are uploaded to Power Bi.** _
 
 | FILE | DESCRIPTION | ORIGIN / TREATMENT |
 | --- | --- | --- |
@@ -105,19 +104,12 @@ _ **Table 1. Origin and description of the files that are uploaded to Power Bi.*
 | 20\_9\_2023\_weighted\_without\_routes\_df(9).csv | Main file of the weighted base, in which you can find promotions and income. Used to compare the predictions of the models and also to compare the other base of promotions. (Settlement journal) | The csv file is generated from a script weighted\_9.py which is integrated into the main script master\_etl.py. Its origin is the file "weighted_rate (11 V20).xlsx" |
 | Dim\_routes.csv | Dimensional file | No modifications are made in power query |
 |
-  |
-  |
-  |
 
 These files can be saved in different paths, but it is recommended to save all the files necessary for the dashboard within the same folder, for better organization. You can always query the source or source path of a query in Power Query by viewing the initial step in the Power Query step sequence.
 
-_ **Figure 9. Example of the origin step for uploading files in Power Bi** _
+_ **Relational model created in Power Bi** _
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/d9e618ed-2ec4-4203-99e4-718b7b7bf138)
 
-![Shape2](RackMultipart20231213-1-mrl30f_html_1c47d5835df7af45.gif) ![Shape1](RackMultipart20231213-1-mrl30f_html_27b8bf2272ec589e.gif) ![](RackMultipart2023121 3-1-mrl30f_html_bcc0b34b7ca31eee.png)
-
-_ **Figure 10. Relational model created in Power Bi** _
-
-![](RackMultipart20231213-1-mrl30f_html_d7fc40676072f8cf.png)
 
 ## DELIVERABLES
 
@@ -130,6 +122,16 @@ _ **Figure 10. Relational model created in Power Bi** _
 ### 6.2 DASHBOARD
 
 The dashboard is divided into different sections
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/1dab5477-ab63-4f0c-867e-7089c63e09fd)
+
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/9935665b-fbaa-4afa-a13f-525a8da70f53)
+
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/4cffd573-5402-4c55-a2a6-efb966fcb4d8)
+
+![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/c0aac845-f08c-498c-be4e-7fb70f2a1a8b)
+
+
+
 
 
 

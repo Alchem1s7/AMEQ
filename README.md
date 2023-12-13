@@ -1,23 +1,19 @@
 
 
-1.
 ## UNDERSTANDING THE SITUATION
 
 The Querétaro mobility agency has provided, from its databases, files that contain information related to daily and monthly public transportation upgrades. For decision making and for a broad vision of the general panorama of public transportation in the state of Querétaro, a summary of the most relevant metrics of the different bases is necessary through the creation of a dashboard that must be fed monthly with new data, which is why an automated process is needed to achieve this goal.
 
-1.
 ## AIM
 
 Creation of an ETL in a Python script that processes the information to be able to upload it to Power Bi and create the interactive dashboard.
 
-1.
 ## SPECIFIC OBJECTIVES
 
 - Development and maintenance of a Python script for the ETL process
 - Creation of the relational model in Power Bi
 - Creation of the dashboard cloud application in Power Bi Services
 
-1.
 ## SCOPE OF THE PROJECT
 
 This project has the scope:
@@ -26,10 +22,9 @@ This project has the scope:
 - Creation of a relational model in Power Bi, as well as DAX measures for use in the dashboard.
 - Deployment of the dashboard application in Power Bi services
 
-1.
+
 ## METHODOLOGY
 
-   1.
 ### DATA EXTRACTION
 
 Data extraction is done directly from the compressed file in RAR format that was provided.
@@ -124,7 +119,6 @@ _ **Figure 10. Relational model created in Power Bi** _
 
 ![](RackMultipart20231213-1-mrl30f_html_d7fc40676072f8cf.png)
 
-1.
 ## DELIVERABLES
 
 ### 6.1 SCRIPT

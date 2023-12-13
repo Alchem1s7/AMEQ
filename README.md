@@ -120,7 +120,9 @@ _ **Relational model created in Power Bi** _
 3. Deployment in Power Bi services
 
 ### 6.2 DASHBOARD
-
+The figures are censored because the information is private.
+This is only a preview of the dashboard, I used filters, dynamic titles, slicers, and the complete dashboard has 18 pages.
+I used lots of DAX measures to provide life to this report.
 The dashboard is divided into different sections
 ![image](https://github.com/Alchem1s7/AMEQ/assets/100399598/1dab5477-ab63-4f0c-867e-7089c63e09fd)
 
